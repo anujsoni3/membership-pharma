@@ -1,0 +1,18 @@
+export const env = {
+  PORT: process.env.PORT ? Number(process.env.PORT) : 4000,
+  NODE_ENV: process.env.NODE_ENV,
+  CLIENT_URL: process.env.CLIENT_URL ,
+  JWT_SECRET: process.env.JWT_SECRET ,
+  MONGO_URI: process.env.MONGO_URI ,
+  EMAIL_FROM: process.env.EMAIL_FROM ,
+  ADMIN_USERNAME: process.env.ADMIN_USERNAME ,
+  ADMIN_EMAIL: process.env.ADMIN_EMAIL,
+  ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
+  SMTP_HOST: process.env.SMTP_HOST,
+  SMTP_PORT: process.env.SMTP_PORT,
+  SMTP_USER: process.env.SMTP_USER,
+  SMTP_PASS: process.env.SMTP_PASS,
+  CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME,
+  CLOUDINARY_API_KEY: process.env.CLOUDINARY_API_KEY,
+  CLOUDINARY_API_SECRET: process.env.CLOUDINARY_API_SECRET,
+};

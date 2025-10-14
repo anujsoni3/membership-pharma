@@ -1,0 +1,22 @@
+# Node + React Workspace
+
+# Node
+node_modules
+npm-debug.log*
+.env
+.env.*
+
+# Logs
+logs
+*.log
+
+# Build
+/dist
+/build
+
+# Editor
+.vscode
+.DS_Store
+
+# Local uploads (development)
+server/uploads
