@@ -110,7 +110,7 @@ router.post('/signup', upload.fields([{ name: 'resume', maxCount: 1 }, { name: '
 
     // send verification email (JWT link)
     const vtoken = jwt.sign({ sub: String(user._id), type: 'verify' }, env.JWT_SECRET, { expiresIn: '2d' });
-    const verifyUrl = `${env.BACKEND_URL}/verify?token=${vtoken}`;
+    const verifyUrl = `${env.CLIENT_URL}/verify?token=${vtoken}`;
     const tmpl = verificationEmail({ name: user.full_name || user.username, url: verifyUrl });
     await sendMail({ to: user.email, ...tmpl });
 
