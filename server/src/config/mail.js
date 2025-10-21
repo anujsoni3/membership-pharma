@@ -6,18 +6,21 @@ let cachedTransporter = null;
 export const getTransporter = async () => {
   if (cachedTransporter) return cachedTransporter;
 
-  // If SMTP env provided, use it
-  if (env.SMTP_HOST && env.SMTP_USER && env.SMTP_PASS) {
+  // Production: Use SendGrid SMTP
+  if (env.SENDGRID_API_KEY) {
     cachedTransporter = nodemailer.createTransport({
-      host: env.SMTP_HOST,
-      port: Number(env.SMTP_PORT || 587),
-      secure: false,
-      auth: { user: env.SMTP_USER, pass: env.SMTP_PASS },
+      host: 'smtp.sendgrid.net',
+      port: 587,       // TLS
+      secure: false,   // false for TLS
+      auth: {
+        user: 'apikey',          // literally 'apikey'
+        pass: env.SENDGRID_API_KEY,
+      },
     });
     return cachedTransporter;
   }
 
-  // Dev: Ethereal test account
+  // Dev: fallback to Ethereal
   const testAccount = await nodemailer.createTestAccount();
   cachedTransporter = nodemailer.createTransport({
     host: 'smtp.ethereal.email',
