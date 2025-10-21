@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: pharma-backend
+    env: node
+    plan: free
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: CLIENT_URL
+        sync: false
+      - key: PORT
+        value: 10000
